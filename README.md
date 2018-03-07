@@ -52,6 +52,30 @@ Successful response
 
 ## 2. API to filter/search stored tweets (/api2)
 This API fetches the data stored by the [first api](#1-api-to-trigger-twitter-stream) based on the filters and search keywords provided and sorts them as required.
+## Operators
+
+**Operators**: Following operators are available in order to filter/query data/tweets -
+
+* _```equals```_ : Facilitates exact match, or **=** operator for numeric/datetime values.
+
+* _```contains```_ : Facilitates full-text search.
+
+* _```wildcard```_ : 
+
+  * ```startswith``` : _*ind_ (Starts with *ind*), 
+  
+  * ```endswith``` : _ind*_ (Ends with *ind*), 
+  
+  * ```wildcard``` : _\*ind\*_ (searches *ind* anywhere in string)
+
+* _```gte```_ : **>=** operator for numeric/datetime values.
+
+* _```gt```_ : **>** operator for numeric/datetime values.
+
+* _```lte```_ : **<=** operator for numeric/datetime values.
+
+* _```lt```_ : **<** operator for numeric/datetime values.
+
 
 API 2- `http://0.0.0.0:8080/api2?from=0&size=20`
 
