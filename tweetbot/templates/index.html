@@ -1,0 +1,768 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<head>
+{% if title %}
+<title>{{ title }}</title>
+        {% else %}
+        <title>DiaboCare</title>
+        {% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="Medical Care a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+<!-- flexslider-css-file -->
+<link rel="stylesheet" href="../../static/css/flexslider.css" type="text/css" media="screen" property="" />
+<!-- //flexslider-css-file -->
+
+<link rel="stylesheet" href="../../static/css/easy-responsive-tabs.css">
+
+<link href="../../static/css/font-awesome.css" rel="stylesheet">		<!-- font-awesome icons-css-file -->
+<link href="../../static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">	<!-- bootstrap-css-file -->
+<link href="../../static/css/style.css" type="text/css" rel="stylesheet" media="all">	<!-- style-css-file -->
+
+
+<!-- gallery -->
+<link rel="stylesheet" href="../../static/css/lightbox.css">
+<!-- //gallery -->
+
+<!-- fonts -->
+ <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+ <link href="//fonts.googleapis.com/css?family=Cinzel:400,700,900" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<!-- //fonts -->
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Table --> 
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<!-- Table ends -->
+<!-- Default-JavaScript-File -->
+<!-- 	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+ --><!-- //Default-JavaScript-File -->
+	
+<!-- <script src="../../static/js/bootstrap.js"></script>//bootstrap-JavaScript-File 	
+ -->{% block head %}{% endblock %}	
+<style>
+
+.nav-tabs {
+	    margin-bottom: 15px;
+	}
+.sign-with {
+    margin-top: 25px;
+    padding: 20px;
+}
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
+</style>
+<!--Latest compiled and minified CSS 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ -->
+
+</head>
+<!-- Head -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<!-- banner -->
+	<div id="home" class="w3ls-banner"> 
+		<!-- header -->
+		<div class="header-w3layouts"> 
+			<!-- Navigation -->
+			<nav class="navbar navbar-default navbar-fixed-top"> 
+				<div class="container">
+					<div class="navbar-header page-scroll">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+							<span class="sr-only">Diabo_care</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h1><a class="navbar-brand" href="{{ url_for('home') }}">DiaboCare</a></h1>
+					</div> 
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav navbar-right cl-effect-15">
+							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+							<li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
+							<li><a class="page-scroll scroll"  href="#profile">Profile</a></li>
+							<li><a class="page-scroll scroll"  href="#reading">Reading</a></li>
+							<li><a class="page-scroll scroll"  href="#graph">Graph</a></li>
+							<li><a class="page-scroll scroll"  href="#search">Search Doctor</a></li>							
+							<li><a class="page-scroll scroll" href="{{ url_for('logout') }}">Logout</a></li>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container -->
+			</nav>  
+		</div>	
+		<!-- //header -->
+		<!--banner-->
+		<!--Slider-->
+		
+		 
+<!--profile-->
+<div class="appointment" id="profile">
+	<div class="container">
+		<div class="w3ls-heading">
+			<h3 style="color: white">Enter your Profile Details</h3>
+		</div>
+		<div class="appointment-grid">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 appointmnet-middle">
+				<div class="inner">
+					<h4>Profile</h4>
+					<form action="/userprofile/" name="row" method="post" class="register">
+						First Name <input type="text" name="fname" id="fname" placeholder="First Name" value= "{{user_value['firstname']}}">
+						Last Name <input type="text" name="lname" id="lname" placeholder="Last Name" value= "{{user_value['lastname']}}">
+						User Name <input type="text" name="uname" id="uname" placeholder="User Name" value= "{{user_value['_id']}}" disabled="true">
+						Date of Birth<input type="text" name="dob" id="dob" placeholder="Date Of Birth (YYYY-MM-DD)" value= "{{user_value['dob']}}">
+						Address Line1 <input type="text" name="addLine1" id="al1" placeholder="Address Line1"  value="{{user_value['addLine1']}}">
+						City <input type="text" name="city" id="city" placeholder="City" value="{{user_value['city']}}">
+						Phone No <input type="text" name="phne" id="phNo" placeholder="Number" value="{{user_value['phne']}}"  required>
+						Email Id <input type="text" name="email" id="lname" placeholder="Email" value= "{{user_value['email']}}">
+						
+						<input type="submit" id="sub" onclick="myFunction()" value="Edit">
+					</form>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--profileends-->
+
+<!-- appointment form -->
+ 
+<div class="appointment" id="reading">
+	<div class="container">
+		<div class="w3ls-heading">
+			<h3 style="color: white">Enter your Sugar Reading</h3>
+		</div>
+		<div class="appointment-grid">
+			<div class="col-md-4 appointmnet-left">
+				<div class="inner">
+					<img src="../../static/images/tt.png" alt=""/>
+				</div>
+			</div>
+			<div class="col-md-4 appointmnet-middle">
+				<div class="inner">
+					<h4>Reading form</h4>
+					<form action="/reading/" name="row" method="post" class="register">
+						<input type="text" name="user_value" id="name" placeholder="value" required="">
+						<input class="date" name="reading_date" id="datepicker" type="text" value="Reading date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Appointment date';}" required="">
+						<textarea  name="user_mood" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Mood...';}" >Tell us About your Mood...</textarea>
+						<input type="submit" onclick="myFunction()" value="Submit reading ">
+					</form>
+				</div>
+			</div>
+			<div class="col-md-4 appointmnet-right">
+				
+				<div class="inner">
+					<h4>Date Filter form</h4>
+					<form action="/datefilter/" name="row" method="post" class="register">
+						<!-- <input type="text" name="user_value" id="name" placeholder="value" required=""> -->
+						<input class="date" name="reading_date_from" id="datepicker" type="text" value="Reading date from (YYYY-MM-DD)" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Appointment date';}" required="">
+						<input class="date" name="reading_date_to" id="datepicker" type="text" value="Reading date to (YYYY-MM-DD)" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Appointment date';}" required="">
+						
+						<input type="submit" onclick="myFunction()" value="Apply FIlter">
+					</form>
+				</div>
+
+
+
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!-- //appointment form -->
+
+<!--graph-->
+ 
+	<div class="about" id="graph" style="background-color: #e4dbed;">
+		<div id="chartdiv" style="color: white">
+
+
+		</div>
+	</div>
+<!--graphends-->
+
+<!-- Search Doctor-->
+<div class="appointment" style="background-color: #FFF" id="search">
+	<div class="container">
+		<div class="w3ls-heading">
+			<h3 style="; font-weight: lighter;">Search Doctor</h3>
+		</div>
+		<div class="appointment-grid">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 appointmnet-middle">
+				<div class="inner">
+					<form action="/search/" name="row" method="post" class="register">
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div style="float: left; position: relative; font-weight: ;" class="col-md-5">
+								Speciality &nbsp;&nbsp;<!--  <input type="text" name="name" id="fname" placeholder="First Name" value= ""> -->
+								<select value="speciality" name="speciality" style="color: grey; font-weight: ">
+						    		{% for i in special %}
+						    		<option value="{{ i }}">{{ i }}</option>
+						           {% endfor %}
+	    						</select>
+							</div>
+							<div style="float: left; position: relative;font-weight: ;" class="col-md-5">
+								Location &nbsp;&nbsp;<!-- <input type="text" name="text" id="speciality" placeholder="Speciality"> -->
+								<select value="location" name="location" style="color: grey; font-weight: ">
+						    		{% for p in location %}
+						    		<option value="{{ p }}">{{ p }}</option>						            
+						           {% endfor %}
+	    						</select>
+
+							</div>	
+						</div>
+						<br>
+						<input class="row pull-right" type="submit" style="margin-right: 25%" onclick="myFunction()" value="Search">	
+						
+					</form>
+				</div>
+				<br>
+				<div>
+					<!-- <iframe src="{{ url_for('doctorlist') }}" width="500" height="500">Couldn't open iframe</iframe> -->
+
+					{% if error %}
+
+					<h3 style="color: black;">{{ error }}</h3>
+					{% endif %}
+
+					{% if l %}
+
+
+					<table class="table table-striped" style="color: white" id="myTable">
+						  <thead>
+						    <th>NAME </th>
+						    <th>CONTACT </th>
+						    <th>ADDRESS </th>
+						    <th></th>
+						  </thead>
+						  <tbody>
+						  {% for i, j, k in l %}						  
+							  <tr style="color: grey">
+							    <td>{{ i }}</td>
+							    <td>{{ j }}</td>
+							    <td>{{ k }}</td>
+							    <td><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	    Profile/Appopintment</button></td>
+							  </tr>
+						  {% endfor %}
+						  </tbody>
+					</table>
+					{% endif %}
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+					    <div class="modal-dialog modal-lg">
+					        <div class="modal-content">
+					            <div class="modal-header">
+					                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					                    ×</button>
+					                <h4 class="modal-title" id="myModalLabel">
+					                    Doctor's Profile/ Appointment Form</h4>
+					            </div>
+					            <div class="modal-body">
+					                <div class="row">
+					                    <div style="padding: 0px 30px;">
+					                        <!-- Nav tabs -->
+					                        <ul class="nav nav-tabs">
+					                            <li class="active"><a href="#Login" data-toggle="tab">Profile</a></li>
+					                            <li><a href="#Registration" data-toggle="tab">Appointment</a></li>
+					                        </ul>
+					                        <br>
+					                        <!-- Tab panes -->
+					                        <div class="tab-content">
+					                        	<div class="tab-pane active" id="Login">
+					                        		<div role="" class="">
+					                                <div class="">
+					                                    <p><b>Name:  {{json['firstname']}} {{json['lastname']}}</b></p>
+					                                </div>
+					                                <br>
+					                                <div class="">
+					                        
+					                                       <p><b> Email : 	{{json['email']}}</b></p>
+					                                   
+					                                </div>
+					                                <br>
+					                                <div class="">
+					                                    <p><b>
+					                                        Speciality : 	{{json['speciality']}}</b>
+					                                        </p>
+					                                </div>
+					                                <br>
+					                                <div class="">
+					                                    <p><b>
+					                                        Address : {{json['addLine1']}}</b></p>
+					                                </div>
+					                                <br>
+					                                <div class="">
+					                                    <p><b>
+					                                        Experience : 	{{json['experience']}}</b></p>
+					                                </div>
+					                                <br>
+					                            </div>
+					                             </div>
+					                            <div class="tab-pane" id="Registration">
+					                                <form action="/sendmail/" role="form" class="form-horizontal" method="post">
+					                                <div class="form-group">
+					                                    <label for="email" class="col-sm-2 control-label">
+					                                        Name</label>
+					                                    <div class="col-sm-10">
+					                                        <div class="row">
+					                                            <div class="col-md-3">
+					                                                <select class="form-control">
+					                                                    <option>Mr.</option>
+					                                                    <option>Ms.</option>
+					                                                    <option>Mrs.</option>
+					                                                </select>
+					                                            </div>
+					                                            <div class="col-md-9">
+					                                                <input type="text" class="form-control" placeholder="Name"  name="name" />
+					                                            </div>
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                                <div class="form-group">
+					                                    <label for="email" class="col-sm-2 control-label">
+					                                        Date</label>
+					                                    <div class="col-sm-3">
+					                                    	<input class="form-control" name="date" type="date" name="StartDate" id="userdate" onchange="TDate()" required>
+					                                    </div>                                    
+					                                    <div class="col-sm-7">
+					                                    	<label for="email" class="col-sm-2 control-label">
+					                                        Time</label>
+					                                        <div class="row">
+					                                            <div class="col-md-3">
+					                                                <input type="text" class="form-control" placeholder="Time"  name="time" />
+					                                                <input type="hidden" class="form-control"  name="doctoremail" value="{{json['email']}}">
+					                                            </div>
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                                <div class="form-group">
+					                                    <label for="email" class="col-sm-2 control-label">
+					                                        Email</label>
+					                                    <div class="col-sm-10">
+					                                        <input type="email" class="form-control" id="email" placeholder="Email"  name="email" />
+					                                    </div>
+					                                </div>
+					                                <div class="form-group">
+					                                    <label for="mobile" class="col-sm-2 control-label">
+					                                        Mobile</label>
+					                                    <div class="col-sm-10">
+					                                        <input type="number" class="form-control" id="mobile" placeholder="Mobile"  name="mobile" />
+					                                    </div>
+					                                </div>
+					                                <div class="row">
+					                                    <div class="col-sm-2">
+					                                    </div>
+					                                    <div class="col-sm-10">
+					                                        <button type="submit" onclick="myFunction()" class="btn btn-primary btn-sm">
+					                                            Submit</button>
+					                                        <button type="button" data-dismiss="modal" class="btn btn-default btn-sm">
+					                                            Cancel</button>
+					                                    </div>
+					                                </div>
+					                                </form>
+					                            </div>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--search ends-->
+
+<!-- contact -->
+ 
+	 <div class="contact" id="contact">
+	<div class="container">
+		<div class="w3ls-heading">
+			<h3 style="color: white">Contact</h3>
+		</div>
+		<div class="contact-top-grids">
+			<div class="col-md-6 contact-left-">
+				<div class="left-top">
+					<h4>Contact information</h4>
+					<p><i class="fa fa-calendar" aria-hidden="true"></i><strong>Monday - Friday <span class="dot">:</span></strong>10:00 AM to 5:00 PM</p>
+					<p><i class="fa fa-map-marker" aria-hidden="true"></i><strong class="p">address <span class="dot1">:</span></strong>LNMIIT Medical Unit</p>
+					<p><i class="fa fa-phone" aria-hidden="true"></i><strong class="p1">phone <span class="dot2">:</span></strong>1800 180 6566</p>
+					<p><i class="fa fa-envelope" aria-hidden="true"></i><strong class="p2">email <span class="dot3">:</span></strong><a href="mailto:info@example.com">divyanshu1302@gmail.com</a></p>
+				</div>
+				<div class="left-bottom">
+					<h4>get connected</h4>
+					<p>Work hard play hard</p>
+					<div class="right-w3l fotw3">
+						<ul class="top-links">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-6 contact-right">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.964304229177!2d75.92133461463679!3d26.936346083117368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dba2021deb2b7%3A0xe6ab89f4bd5ff803!2sLNMIIT+Medical+Center!5e0!3m2!1sen!2sin!4v1509389375892" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+			<div class="contact-w3ls">
+				<form action="#" method="post">
+					<div class="col-md-7 col-sm-7 contact-left agileits-w3layouts">
+						<input type="text" name="First Name" placeholder="Name" required="">
+						<input type="email"  class="email" name="Email" placeholder="Email" required="">
+						<input type="text" name="Number" placeholder="Mobile Number" required="">
+						<!-- <input type="text" class="email" name="Last Name" placeholder="Last Name" required=""> -->
+					</div> 
+					<div class="col-md-5 col-sm-5 contact-right agileits-w3layouts">
+						<textarea name="Message" placeholder="Message" required=""></textarea>
+						<input type="submit" value="Submit">
+					</div>
+					<div class="clearfix"> </div> 
+				</form>
+			</div>  
+
+	</div>
+</div>
+<!-- //contact -->
+
+<!-- copyright -->
+<div class="copyright-agile">
+	<p>&copy; 2017 DiaboCare. All rights reserved | Design by Team with Love</a></p>
+</div>
+<!-- //copyright -->
+
+
+
+<script src="../../static/js/easy-responsive-tabs.js"></script>
+<script>
+$(document).ready(function () {
+$('#horizontalTab').easyResponsiveTabs({
+type: 'default', //Types: default, vertical, accordion           
+width: 'auto', //auto or any width like 600px
+fit: true,   // 100% fit in a container
+closed: 'accordion', // Start closed if in accordion view
+activate: function(event) { // Callback function if tab is switched
+var $tab = $(this);
+var $info = $('#tabInfo');
+var $name = $('span', $info);
+$name.text($tab.text());
+$info.show();
+}
+});
+$('#verticalTab').easyResponsiveTabs({
+type: 'vertical',
+width: 'auto',
+fit: true
+});
+});
+</script>
+
+
+
+
+
+<!--banner Slider starts Here-->
+		<script src="../../static/js/responsiveslides.min.js"></script>
+							<script>
+								// You can also use "$(window).load(function() {"
+								$(function () {
+								  // Slideshow 4
+								  $("#slider3").responsiveSlides({
+									auto: true,
+									pager:true,
+									nav:false,
+									speed: 500,
+									namespace: "callbacks",
+									before: function () {
+									  $('.events').append("<li>before event fired.</li>");
+									},
+									after: function () {
+									  $('.events').append("<li>after event fired.</li>");
+									}
+								  });
+							
+								});
+							 </script>
+
+							<!--banner Slider starts Here-->
+							<!--start-date-piker-->
+							<link rel="stylesheet" href="../../static/css/jquery-ui.css" />
+									<script src="../../static/js/jquery-ui.js"></script>
+									<script>
+										$(function() {
+										$( "#datepicker" ).datepicker();
+										});
+									</script>
+							<!--/End-date-piker-->
+							
+<!-- js for smooth scrollings -->
+	<script src="../../static/js/SmoothScroll.min.js"></script>
+<!-- js for smooth scrollings -->
+<script type="text/javascript">
+	function TDate() {
+    var UserDate = document.getElementById("userdate").value;
+    var ToDate = new Date();
+
+    if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+          alert("The Date must be Bigger or Equal to today date");
+          document.getElementById("userdate").value = null;
+          return false;
+     }
+    return true;
+}
+</script>
+<!-- flexisel -->
+	<script type="text/javascript" src="../../static/js/jquery.flexisel.js"></script>
+	<script type="text/javascript">
+		$(window).load(function() {
+			$("#flexiselDemo1").flexisel({
+				visibleItems: 3,
+				animationSpeed: 1000,
+				autoPlay: false,
+				autoPlaySpeed: 3000,    		
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: { 
+					portrait: { 
+						changePoint:480,
+						visibleItems: 1
+					}, 
+					landscape: { 
+						changePoint:640,
+						visibleItems:2
+					},
+					tablet: { 
+						changePoint:768,
+						visibleItems: 3
+					}
+				}
+			});
+			
+		});
+	</script>
+<!-- //flexisel -->
+
+<!-- start-smooth-scrolling -->
+<script type="text/javascript" src="../../static/js/move-top.js"></script>
+<script type="text/javascript" src="../../static/js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smooth-scrolling -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+
+<!-- Scrolling Nav JavaScript --> 
+    <script src="../../static/js/scrolling-nav.js"></script>  
+<!-- //fixed-scroll-nav-js --> 
+
+
+
+
+ <div class="container">
+            {% include "flash.html" %}
+            {% block content %}{% endblock %}
+            </div>
+
+
+</body>
+
+
+
+<!-- Styles -->
+<style>
+#chartdiv {
+	width		: 100%;
+	height		: 500px;
+	font-size	: 11px;
+}																	
+</style>
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<script type="text/javascript">
+	
+	function func(){
+		var l = document.getElementById("phNo").value;
+		if (l.length != 10) {
+			document.getElementById("sub").disabled = true;
+		}
+		else
+			document.getElementById("sub").disabled = false;
+	}
+</script>
+
+<!-- Script for table organisation -->
+<script type="text/javascript">
+	$(document).ready(function(){
+    $('#myTable').DataTable();
+});
+</script>
+<!-- Script for table ends -->
+
+<!-- Chart code -->
+<script>
+var chartData = generatechartData();
+
+
+function generatechartData() {
+    var chartData = [];
+    // var firstDate = new Date();
+    // firstDate.setDate(firstDate.getDate() - 150);
+    // var visits = 500;
+
+    // for (var i = 0; i < 150; i++) {
+        // we create date objects here. In your data, you can have date strings
+        // and then set format of your dates using chart.dataDateFormat property,
+        // however when possible, use date objects, as this will speed up chart rendering.
+        // var newDate = new Date(firstDate);
+        // newDate.setDate(newDate.getDate() + i);
+
+        // visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+
+        // chartData.push({
+        //     date: newDate,
+        //     visits: visits
+        // });
+
+
+        {% for i, j in k %}
+
+            // var p = AmCharts.stringToDate({{ j }}, "YYYY-MM-DD");
+            // new Date("2013/1/16");
+            var newDate = new Date("{{ j }}");
+
+            console.log(newDate)
+
+            chartData.push({
+            date: newDate,
+            visits: {{ i }}
+        });
+
+        {% endfor %}
+    // }
+    return chartData;
+}
+
+var chart = AmCharts.makeChart("chartdiv", {
+    "theme": "light",
+    "type": "serial",
+    "marginRight": 80,
+    "autoMarginOffset": 20,
+    "marginTop":20,
+    "dataProvider": chartData,
+    "valueAxes": [{
+        "id": "v1",
+        "axisAlpha": 0.1
+    }],
+    "graphs": [{
+        "useNegativeColorIfDown": true,
+        "balloonText": "[[category]]<br><b>value: [[value]]</b>",
+        "bullet": "round",
+        "bulletBorderAlpha": 1,
+        "bulletBorderColor": "#FFFFFF",
+        "hideBulletsCount": 50,
+        "lineThickness": 5,
+        "lineColor": "#fdd400",
+        "negativeLineColor": "#67b7dc",
+        "valueField": "visits"
+    }],
+    "chartScrollbar": {
+        "scrollbarHeight": 5,
+        "backgroundAlpha": 0.1,
+        "backgroundColor": "#FFFFFF",
+        "selectedBackgroundColor": "#67b7dc",
+        "selectedBackgroundAlpha": 1
+    },
+    "chartCursor": {
+        "valueLineEnabled": true,
+        "valueLineBalloonEnabled": true
+    },
+    "categoryField": "date",
+    "categoryAxis": {
+        "parseDates": true,
+        "axisAlpha": 0,
+        "minHorizontalGap": 60
+    },
+    "export": {
+        "enabled": true
+    }
+});
+
+chart.addListener("dataUpdated", zoomChart);
+//zoomChart();
+
+function zoomChart() {
+    if (chart.zoomToIndexes) {
+        chart.zoomToIndexes(130, chartData.length - 1);
+    }
+}
+</script>
+</html>
