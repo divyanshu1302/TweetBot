@@ -17,7 +17,7 @@ Technologies used:
   `virtualenv venv`
   3. activate virtual environment
   `source venv/bin/activate`
-  4. install requirements after acuvating virtual environment
+  4. install requirements after activating virtual environment
   `pip install -r requirements.txt`
   5. Change the twitter stream Api credentials in configure.py file.
 
