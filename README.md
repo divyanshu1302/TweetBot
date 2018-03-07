@@ -13,7 +13,7 @@ Technologies used:
   
 ## To setup project (Installation Instructions)
   1. clone the project
-  2. cd to project folder `cd twitter-streaming-filter-api` and create virtual environment
+  2. cd to project folder `cd twitterapibackend` and create virtual environment
   `virtualenv venv`
   3. activate virtual environment
   `source venv/bin/activate`
