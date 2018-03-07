@@ -1,9 +1,9 @@
 # set twitter keys & tokens
 twitter_config = {
-  "access_token" : "963834376717914112-560U3mufNQKZFALvkFKI0l33MhTfzkM",
-	"access_token_secret" : "GLJQ4hddkNdhISYifPoJwWb6Lrp32CWo6wiVpaKsPajpL",
-	"consumer_key" : "O6AcuH3q37rMzeDSN4BNPc0Xo" ,
-	"consumer_secret" : "qkuW0tkpetDr8PLpnBnx1ibrmJW7T5ZQisHz5hOyuADDuF9HbE",
+  "access_token" : "",
+	"access_token_secret" : "",
+	"consumer_key" : "" ,
+	"consumer_secret" : "",
 }
 
 es_mappings = {
