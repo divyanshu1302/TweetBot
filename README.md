@@ -109,10 +109,11 @@ Body in Raw form
       }
 }
 ```
-##Response
- You'll get the filtered tweets response
+## Response
+ You'll get the filtered tweets response 
+
  *** AND represents must, OR repesents should and NOT repesents must_not, as matched according to elasticsearch query attributes.
- *** Response may result to empty in case if it'll not find any relevant reult according to provided query.
+ *** Response may result to empty in case if it'll not find any relevant result according to provided query.
 
 Example:
 Body Json:
