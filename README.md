@@ -1,9 +1,9 @@
 # Twitter Stream Filter API(TweetBot)
 
 APIs has been created to store twitter streaming data and retrieve data based on applied filters. It is a set of 3 APIs-
-1. [API to trigger Twitter Stream](#1-api-to-trigger-twitter-stream-stream)
-2. [API to filter/search stored tweets](#2-api-to-filtersearch-stored-tweets-search)
-3. [API to export filtered data in CSV](#3-api-to-export-filtered-data-in-csv-getcsv)
+1. API to trigger Twitter Stream
+2. API to filter/search stored tweets
+3. API to export filtered data in CSV
 
 Technologies used:
   - Python
@@ -11,12 +11,12 @@ Technologies used:
   - ElasticSearch 
   - Twitter Streaming API
   
-## Jump To
+<!-- ## Jump To
 - [Installation Guide](#installation-instructions)
 - [API 1 - API to trigger Twitter Stream](#1-api-to-trigger-twitter-stream-stream)
 - [API 2 - API to filter/search stored tweets](#2-api-to-filtersearch-stored-tweets-search)
 - [API 3 - API to export filtered data in CSV](#3-api-to-export-filtered-data-in-csv-getcsv)
-  
+   -->
 ## To setup project (Installation Instructions)
   1. clone the project
   2. cd to project folder `cd twitter-streaming-filter-api` and create virtual environment
