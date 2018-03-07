@@ -11,12 +11,6 @@ Technologies used:
   - ElasticSearch 
   - Twitter Streaming API
   
-<!-- ## Jump To
-- [Installation Guide](#installation-instructions)
-- [API 1 - API to trigger Twitter Stream](#1-api-to-trigger-twitter-stream-stream)
-- [API 2 - API to filter/search stored tweets](#2-api-to-filtersearch-stored-tweets-search)
-- [API 3 - API to export filtered data in CSV](#3-api-to-export-filtered-data-in-csv-getcsv)
-   -->
 ## To setup project (Installation Instructions)
   1. clone the project
   2. cd to project folder `cd twitter-streaming-filter-api` and create virtual environment
@@ -32,7 +26,7 @@ Technologies used:
   `https://www.tutorialspoint.com/articles/ install-and-configure-elasticsearch-in-ubuntu-14-04-3`
 
 ## To runserver (Installation Instructions)
-Run the python runserver.py (try to avoid running at 9200 port because elastic default port is also 9200 )
+Run the `python runserver.py` (try to avoid running at 9200 port because elastic default port is also 9200 )
   
 ## API's/Endpoints
 ## 1. API 1 to trigger Twitter Stream (/api1)
@@ -49,6 +43,7 @@ Successful response
   "message": "Started streaming tweets with keywords [u'modi', u'AbkiBarModiSarkar', u'ModiForPM']"
   }
   ```
+  ***Default time for streaming is 30 seconds
 
 
 ## 2. API to filter/search stored tweets (/api2)
@@ -114,12 +109,74 @@ Body in Raw form
       }
 }
 ```
-Response
- You'll get the filtered tweets response 
+##Response
+ You'll get the filtered tweets response
+ *** AND represents must, OR repesents should and NOT repesents must_not, as matched according to elasticsearch query attributes.
+ *** Response may result to empty in case if it'll not find any relevant reult according to provided query.
 
+Example:
+Body Json:
+
+```{
+  "sort":["created_at"],              
+  "criteria": {
+    
+    "OR": [{
+      "fields": ["tweet_text"],
+      "operator": "contains",
+      "query": "modi"
+        }
+    ]
+  }
+}```
+
+Response:
+  {
+    "count": {
+        "total": 16,
+        "fetched": 16
+    },
+    "results": [
+        {
+            "sort": [
+                1520414046000
+            ],
+            "_type": "tweet",
+            "_source": {
+                "lang": "und",
+                "is_retweeted": false,
+                "retweet_count": 0,
+                "screen_name": "jova_novic",
+                "country": "",
+                "created_at": "2018-03-07T09:14:06",
+                "hashtags": [],
+                "tweet_text": "@pravoverna Kamenjarke nisu u modi vise,sad su trotoarke i zovu sebe starletama!",
+                "source_device": "Twitter for Android",
+                "reply_count": 0,
+                "location": "Kragujevac, Srbija",
+                "country_code": "",
+                "timestamp_ms": "1520414046040",
+                "user_name": "Jova Novic",
+                "favorite_count": 0
+            },
+            "_score": null,
+            "_index": "tweets_index",
+            "_id": "AWH_vTXoVKT_vQpI5__3"
+        },
+        {.....}
+        {.....}
+        {.....}
+        {.....}
+    ]
+}
+
+ 
 
 ## 3. API to export filtered data in CSV (/api3)
-This API returns the data in CSV. Input should be given in same format as in api2 as json payload but here no need for providing pagination details.
 
-API : `http://0.0.0.0:8080/api3`
+API 3 : `http://0.0.0.0:8080/api3`
 (methods supported - GET, POST)
+
+This API returns the data in CSV. Input should be given in same format as in api2 as json payload but here no need for providing pagination details.
+Csv will be downloaded when puts request on browser and When posted in postman csv data will be reflected in response body and you can find attachment in header.
+

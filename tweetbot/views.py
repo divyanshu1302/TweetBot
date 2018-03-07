@@ -96,15 +96,8 @@ def jsontocsv():
         res["count"] = {"total": hits.total, "fetched": len(hits.hits) }
         res["results"] = hits.hits
 
-    json_to_csv(res)
-    res = {
-            "status": "success",
-        }
-    return json_response(res)
-   
+    return json_to_csv(res)
     
-
-
 
 
            

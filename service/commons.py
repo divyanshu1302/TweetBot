@@ -1,7 +1,9 @@
 import json
-import csv
-from flask import Response
+import pyexcel as pe
+import StringIO # py2.7, for python3, please use import io
+from flask import Response,make_response
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -37,20 +39,27 @@ def json_to_csv(res):
     """
     d = []
     l  = len(res["results"])
+    d.append((res["results"][0]["_source"]).keys())
     for i in range(l):
-        d.append(res["results"][i]["_source"])
+        d.append((res["results"][i]["_source"]).values())
 
     # open a file for writing
-    data = open('tweet.csv', 'w++')
-    # create the csv writer object
-    csvwriter = csv.writer(data)
-    count = 0
-    for t in d:
-          if count == 0:
-                 header = t.keys()
-                 csvwriter.writerow(header)
-                 count += 1
-          csvwriter.writerow(t.values())
-    data.close()
+    # data = open('tweet.csv', 'w++')
+    # # create the csv writer object
+    # csvwriter = csv.writer(data)
+    # count = 0
+    # for t in d:
+    #       if count == 0:
+    #              header = t.keys()
+    #              csvwriter.writerow(header)
+    #              count += 1
+    #       csvwriter.writerow(t.values())
+    # data.close()
 
-    return True
+    sheet = pe.Sheet(d)
+    io = StringIO.StringIO()
+    sheet.save_to_memory("csv", io)
+    output = make_response(io.getvalue())
+    output.headers["Content-Disposition"] = "attachment; filename=export.csv"
+    output.headers["Content-type"] = "text/csv"
+    return output
