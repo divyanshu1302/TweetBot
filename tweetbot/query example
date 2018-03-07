@@ -1,0 +1,1 @@
+{"sort": [u"created_at"], "query": {"bool": {"should": [{"multi_match": {"query": u"modi", "fields": [u"hashtags"]}}, {"multi_match": {"query": u"modi", "fields": [u"hashtags"]}}]}}, "from": 0, "size": 100}
