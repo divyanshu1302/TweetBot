@@ -32,6 +32,7 @@ Technologies used:
   `https://www.tutorialspoint.com/articles/ install-and-configure-elasticsearch-in-ubuntu-14-04-3`
 
 ## To runserver (Installation Instructions)
+Run the python runserver.py (try to avoid running at 9200 port because elastic default port is also 9200 )
   
 ## API's/Endpoints
 ## 1. API 1 to trigger Twitter Stream (/api1)
